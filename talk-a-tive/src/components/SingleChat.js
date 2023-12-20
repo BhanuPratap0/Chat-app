@@ -13,7 +13,7 @@ import animationData from "../animation/typing.json"
 import io from 'socket.io-client'
 import Lottie from 'react-lottie'
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 const ENDPOINT = `https://talk-a-tive-ihk6.onrender.com:${PORT}`;
 var socket, selectedChatCompare;
 
