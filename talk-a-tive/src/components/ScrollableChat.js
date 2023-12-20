@@ -4,7 +4,7 @@ import { isLastMessage, isSameSender, isSameSenderMargin, isSameUser } from '../
 import { ChatState } from '../Context/ChatProvider'
 import { Avatar, Box, Text, Tooltip } from '@chakra-ui/react'
 
-const ScrollableChat = ({messages}) => {
+const ScrollableChat = ({selectedChat, messages}) => {
     const { user } = ChatState();
   return (
     <ScrollableFeed>
