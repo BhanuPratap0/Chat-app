@@ -196,7 +196,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 <>
                     <Text
                         display={"flex"}
-                        fontSize={{ base: "28px", md: "30px" }}
+                        fontSize={{ base: "15px", md: "30px" }}
                         pb={3}
                         px={2}
                         w={"100%"}
@@ -225,7 +225,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                         flexDir={"column"}
                         justifyContent={"flex-end"}
                         p={3}
-                        bg={"#E8E8E8"}
+                        backgroundImage={require('./images/chat-bg.jpg')}
+                        backgroundSize={"cover"}
+                        backgroundRepeat={"no-repeat"}
                         w={"100%"}
                         h={"100%"}
                         borderRadius={"lg"}
