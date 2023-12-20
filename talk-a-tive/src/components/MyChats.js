@@ -69,7 +69,8 @@ const MyChats = ({fetchAgain}) => {
 
           <Button
             display={"flex"}
-            fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+            fontSize={{ base: "15px", md: "10px", lg: "17px" }}
+            padding={1}
             rightIcon={<AddIcon />}
           >
             New Group Chat

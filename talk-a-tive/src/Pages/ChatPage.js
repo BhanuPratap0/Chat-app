@@ -16,7 +16,7 @@ const ChatPage = () => {
             <Box
                 display={"flex"}
                 width={"100%"}
-                height={"91.5vh"}
+                height={"88vh"}
                 padding={"10px"}
                 justifyContent={"space-between"}
             >
