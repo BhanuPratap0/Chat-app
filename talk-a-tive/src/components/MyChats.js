@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { ChatState } from '../Context/ChatProvider';
-import { Box, Button, Stack, Text, useToast } from '@chakra-ui/react';
+import { Box, Button, Stack, Text, useToast, Image } from '@chakra-ui/react';
 import axios from 'axios';
 import { AddIcon } from '@chakra-ui/icons';
 import ChatLoading from './ChatLoading';
-import { getSender } from '../config/ChatLogics';
+import { getSender, getSenderFull } from '../config/ChatLogics';
 import GroupChatModal from './miscellaneous/GroupChatModal';
 
 const MyChats = ({fetchAgain}) => {
@@ -91,6 +91,7 @@ const MyChats = ({fetchAgain}) => {
             <Stack overflow={"scroll"} >
               {chats.map((chat) => {
                 return <Box
+                  display={"flex"}
                   onClick={() => setSelectedChat(chat)}
                   cursor={"pointer"}
                   bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
@@ -99,8 +100,16 @@ const MyChats = ({fetchAgain}) => {
                   py={2}
                   borderRadius={"lg"}
                   key={chat._id}
+                  alignItems={"center"}
                 >
-                  <Text>
+                    <Image
+                    borderRadius={"50%"}
+                    boxSize={"2.9rem"}
+                    objectFit='cover'
+                    src={!chat.isGroupChat? getSenderFull(loggedUser, chat.users).pic : require('./images/group.png') } ></Image>
+                  <Text
+                  ml={2}
+                  >
                     {!chat.isGroupChat ? getSender(loggedUser, chat.users) : chat.chatName}
                   </Text>
                 </Box>
