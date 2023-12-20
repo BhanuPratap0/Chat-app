@@ -51,6 +51,9 @@ const authUser = asyncHandler(async (req, res) => {
             pic: user.pic,
             token: generateToken(user._id),
         })
+    } else {
+        res.status(400);
+        throw new Error("Failed to register");
     }
 });
 

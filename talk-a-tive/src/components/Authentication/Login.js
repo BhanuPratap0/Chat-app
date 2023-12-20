@@ -27,7 +27,6 @@ const Login = () => {
             return;
         }
         
-
         try {
             const config = {
                 headers: {
@@ -51,7 +50,7 @@ const Login = () => {
             history("/chats");
         } catch (error) {
             toast({
-                title: 'Password Do Not Match',
+                title: 'Invalid Credentials',
                 description: error.response.data.message,
                 status: 'warning',
                 duration: 3000,
@@ -70,6 +69,7 @@ const Login = () => {
                 <FormControl id='email' isRequired>
                     <FormLabel>Email</FormLabel>
                     <Input
+                        type='email'
                         value={email}
                         placeholder='Enter Your Email'
                         onChange={(e) => { setEmail(e.target.value) }}
