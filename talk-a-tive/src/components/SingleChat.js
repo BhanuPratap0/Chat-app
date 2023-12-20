@@ -8,13 +8,16 @@ import UpdateGroupChatModal from './miscellaneous/UpdateGroupChatModal'
 import axios from 'axios'
 import ScrollableChat from './ScrollableChat'
 import './style.css'
+const PORT = process.env.PORT || 5000;
+
 
 import animationData from "../animation/typing.json"
 
 import io from 'socket.io-client'
 import Lottie from 'react-lottie'
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = `http://localhost:${PORT}`;
 var socket, selectedChatCompare;
+
 
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
