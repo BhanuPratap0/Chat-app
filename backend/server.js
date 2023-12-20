@@ -6,7 +6,7 @@ const { notFound, errorHandler } = require("./middleware/errorMiddleware")
 const chatRoutes = require('./routes/chatRoutes')
 const messageRoutes = require('./routes/messageRoutes')
 var cors = require('cors')
-const path = require('path')
+const path = require('path')  
 
 
 
