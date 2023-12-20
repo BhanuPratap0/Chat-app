@@ -237,7 +237,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                             (<div className='messages' >
                                 <ScrollableChat messages={messages} />
                             </div>)}
-                        <FormControl onKeyDown={sendMessage} isRequired mt={3}>
+                        <FormControl display={"flex"} onKeyDown={sendMessage} isRequired mt={3}>
                             {isTyping ? <div>
                                 <Lottie
                                     options={defaultOptions}
