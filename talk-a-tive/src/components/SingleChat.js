@@ -14,7 +14,7 @@ import io from 'socket.io-client'
 import Lottie from 'react-lottie'
 
 const PORT = process.env.PORT || 5000;
-const ENDPOINT = `http://localhost:${PORT}`;
+const ENDPOINT = `http://122.177.15.89:${PORT}`;
 var socket, selectedChatCompare;
 
 
