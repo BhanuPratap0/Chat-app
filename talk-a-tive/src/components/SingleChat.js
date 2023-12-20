@@ -237,7 +237,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                             (<Spinner size={"xl"} w={20} h={20} alignSelf={"center"} margin={"auto"} />)
                             :
                             (<div className='messages' >
-                                <ScrollableChat messages={messages} />
+                                <ScrollableChat selectedChat={selectedChat} messages={messages} />
                             </div>)}
                             {isTyping ? <div>
                                 <Lottie

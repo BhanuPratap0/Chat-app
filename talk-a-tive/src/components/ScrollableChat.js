@@ -10,7 +10,7 @@ const ScrollableChat = ({messages}) => {
     <ScrollableFeed>
       {messages && 
       messages.map((m,i) => {
-        return <div style={{display: "flex"}} key={m._id}>
+        return <><div style={{display: "flex"}} key={m._id}>
                 {
                     (isSameSender(messages, m, i, user._id)
                     || isLastMessage(messages, i, user._id))
@@ -37,6 +37,12 @@ const ScrollableChat = ({messages}) => {
                   marginTop: isSameUser(messages, m, i, user._id) ? 3 :10,
                 }} >{m.content}</span>
         </div>
+        {(isSameSender(messages, m, i, user._id)
+          || isLastMessage(messages, i, user._id))
+          && selectedChat.isGroupChat && <Text
+          fontSize={"0.7rem"}
+          >{m.sender.name.split(" ")[0]}</Text>}
+          </>
       })}
     </ScrollableFeed>
   )

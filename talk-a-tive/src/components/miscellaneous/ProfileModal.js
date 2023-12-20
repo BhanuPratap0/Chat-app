@@ -44,6 +44,7 @@ const ProfileModal = ({ user, children }) => {
                         <Image
                         borderRadius={"full"}
                         boxSize={"150px"}
+                        objectFit='cover'
                         src={user.pic}
                         alt={user.name}
                         >
