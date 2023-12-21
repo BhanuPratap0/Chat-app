@@ -2,7 +2,6 @@
 
 .App {
   height: 100vh;
-  background-image: url(./Pages/images/bg.jpg);
   background-size: cover;
   background-position: center;
 }

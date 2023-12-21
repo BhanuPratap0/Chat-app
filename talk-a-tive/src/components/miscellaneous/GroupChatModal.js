@@ -14,6 +14,7 @@ import { ChatState } from '../../Context/ChatProvider'
 import UserListItem from '../UserAvatar/UserListItem'
 import ChatLoading from '../ChatLoading';
 import UserBadgeItem from '../UserAvatar/UserBadgeItem'
+import { ModeState } from '../../Context/ModeProvider'
 
 const GroupChatModal = ({ children }) => {
 
@@ -26,6 +27,7 @@ const GroupChatModal = ({ children }) => {
     const [loading, setLoading] = useState(false);
 
     const toast = useToast()
+    const {mode} = ModeState();
 
     const handleSearch = async (query) => {
         setLoading(true);
@@ -130,7 +132,10 @@ const GroupChatModal = ({ children }) => {
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
-                <ModalContent>
+                <ModalContent
+                backgroundColor={mode === "light" ? "white" : "#3f3f3f"}
+                color={mode === "light" ? "black" : "white"}
+                >
                     <ModalHeader>Modal Title</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>

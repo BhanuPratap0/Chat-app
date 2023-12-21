@@ -4,11 +4,13 @@ import { ChatState } from '../Context/ChatProvider';
 import SideDrawer from '../components/miscellaneous/SideDrawer'
 import ChatBox from '../components/ChatBox'
 import MyChats from '../components/MyChats'
+import { ModeState } from '../Context/ModeProvider';
 
 const ChatPage = () => {
 
     const { user } = ChatState();
     const [fetchAgain, setFetchAgain] = useState();
+    const {mode} = ModeState();
 
     return (
         <div style={{width:"100%",}} >

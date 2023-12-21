@@ -3,9 +3,11 @@ import ScrollableFeed from 'react-scrollable-feed'
 import { isLastMessage, isSameSender, isSameSenderMargin, isSameUser } from '../config/ChatLogics'
 import { ChatState } from '../Context/ChatProvider'
 import { Avatar, Box, Text, Tooltip } from '@chakra-ui/react'
+import { ModeState } from '../Context/ModeProvider'
 
 const ScrollableChat = ({selectedChat, messages}) => {
     const { user } = ChatState();
+    const {mode} =ModeState();
   return (
     <ScrollableFeed>
       {messages && 
@@ -29,7 +31,8 @@ const ScrollableChat = ({selectedChat, messages}) => {
                     </Tooltip>)
                 }
                 <span style={{
-                  backgroundColor : `${m.sender._id === user._id ? "#BEE3F8" : "#B9F5D0"}`,
+                  // backgroundColor : `${m.sender._id === user._id ? "#BEE3F8" : "#B9F5D0"}`,
+                  backgroundColor : `${m.sender._id === user._id ? mode=='light'?"#BEE3F8":"#647E68" :mode=='light'?"#B9F5D0":"#1F6E8C"}`,
                   borderRadius: "20px",
                   padding: "5px 15px",
                   maxWidth: "75%",

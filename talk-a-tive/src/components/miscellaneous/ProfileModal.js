@@ -11,23 +11,26 @@ import {
     Text,
 } from '@chakra-ui/react'
 import { ViewIcon } from '@chakra-ui/icons'
+import { ModeState } from '../../Context/ModeProvider';
 const ProfileModal = ({ user, children }) => {
 
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const {mode} =ModeState();
     return (
         <>
             {
                 children ? <span onClick={onOpen} >{children}</span> : (
                     <IconButton
-                        d={{ base: "flex" }}
+                        display={{ base: "flex" }}
                         icon={<ViewIcon />}
                         onClick={onOpen} 
                     ></IconButton>
                 )
             }
-            <Modal size={"lg"}  isOpen={isOpen} onClose={onClose} isCentered>
+            <Modal  size={"lg"}  isOpen={isOpen} onClose={onClose} isCentered>
                 <ModalOverlay />
-                <ModalContent height={"410px"} >
+                <ModalContent backgroundColor={mode === "light" ? "white" : "#3f3f3f"}
+        color={mode === "light" ? "black" : "white"} height={"410px"} >
                     <ModalHeader 
                         fontSize={"40px"}
                         fontFamily={"Work sans"}

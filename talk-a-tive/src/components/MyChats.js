@@ -6,8 +6,9 @@ import { AddIcon } from '@chakra-ui/icons';
 import ChatLoading from './ChatLoading';
 import { getSender, getSenderFull } from '../config/ChatLogics';
 import GroupChatModal from './miscellaneous/GroupChatModal';
+import { ModeState } from '../Context/ModeProvider';
 
-const MyChats = ({fetchAgain}) => {
+const MyChats = ({ fetchAgain }) => {
   useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
@@ -16,6 +17,7 @@ const MyChats = ({fetchAgain}) => {
   const [loggedUser, setLoggedUser] = useState();
   const { user, setSelectedChat, selectedChat, chats, setChats } = ChatState();
   const toast = useToast();
+  const { mode } = ModeState();
 
   const fetchChats = async () => {
     try {
@@ -26,7 +28,7 @@ const MyChats = ({fetchAgain}) => {
       };
 
       const { data } = await axios.get("/api/chat", config);
-     
+
       setChats(data);
 
     } catch (error) {
@@ -49,7 +51,8 @@ const MyChats = ({fetchAgain}) => {
         flexDir={"column"}
         alignItems={"center"}
         p={3}
-        bg={"white"}
+        backgroundColor={mode === "light" ? "white" : "#3f3f3f"}
+        color={mode === "light" ? "black" : "white"}
         w={{ base: "100%", md: "31%" }}
         borderRadius={"lg"}
         borderWidth={"1px"}
@@ -67,22 +70,22 @@ const MyChats = ({fetchAgain}) => {
           MyChats
           <GroupChatModal>
 
-          <Button
-            display={"flex"}
-            fontSize={{ base: "15px", md: "10px", lg: "17px" }}
-            padding={1}
-            rightIcon={<AddIcon />}
-          >
-            New Group Chat
-          </Button>
-            
+            <Button
+              display={"flex"}
+              fontSize={{ base: "15px", md: "10px", lg: "17px" }}
+              padding={1}
+              rightIcon={<AddIcon />}
+            >
+              New Group Chat
+            </Button>
+
           </GroupChatModal>
         </Box>
         <Box
           display={"flex"}
           flexDir={"column"}
           p={3}
-          bg={"#F8F8F8"}
+          bg={mode=='light'?"#F8F8F8":"#575757"}
           width={"100%"}
           h={"100%"}
           borderRadius={"lg"}
@@ -95,7 +98,7 @@ const MyChats = ({fetchAgain}) => {
                   display={"flex"}
                   onClick={() => setSelectedChat(chat)}
                   cursor={"pointer"}
-                  bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
+                  bg={selectedChat === chat ? mode=='light'?"#38B2AC" :"#116D6E" : mode=='light'? "#E8E8E8":"#9DB2BF"}
                   color={selectedChat === chat ? "white" : "black"}
                   px={3}
                   py={2}
@@ -103,13 +106,13 @@ const MyChats = ({fetchAgain}) => {
                   key={chat._id}
                   alignItems={"center"}
                 >
-                    <Image
+                  <Image
                     borderRadius={"50%"}
                     boxSize={"2.9rem"}
                     objectFit='cover'
-                    src={!chat.isGroupChat? getSenderFull(loggedUser, chat.users).pic : require('./images/group.png') } ></Image>
+                    src={!chat.isGroupChat ? getSenderFull(loggedUser, chat.users).pic : require('./images/group.png')} ></Image>
                   <Text
-                  ml={2}
+                    ml={2}
                   >
                     {!chat.isGroupChat ? getSender(loggedUser, chat.users) : chat.chatName}
                   </Text>

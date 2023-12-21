@@ -12,6 +12,7 @@ import './style.css'
 import animationData from "../animation/typing.json"
 import io from 'socket.io-client'
 import Lottie from 'react-lottie'
+import { ModeState } from '../Context/ModeProvider'
 
 
 const ENDPOINT = `https://talk-a-tive-ihk6.onrender.com`;
@@ -24,7 +25,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
     const { user, selectedChat, setSelectedChat, notification, setNotification } = ChatState()
 
-
+    const {mode} =ModeState();
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState();
     const [loading, setLoading] = useState(false);
@@ -225,7 +226,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                         flexDir={"column"}
                         justifyContent={"flex-end"}
                         p={3}
-                        backgroundImage={require('./images/chat-bg.jpg')}
+                        backgroundImage={mode==='light'?require('./images/chat-bg.jpg'): require('./images/dark-chat-bg.jpg')}
                         backgroundSize={"cover"}
                         backgroundRepeat={"no-repeat"}
                         w={"100%"}
