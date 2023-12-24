@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <div>
-      <Container maxW='xl' height={"92vh"} centerContent>
+      <Container maxW='xl' height={"720px"} centerContent>
         <Box
           d="flex"
           p={3}

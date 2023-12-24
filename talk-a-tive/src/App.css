@@ -3,7 +3,7 @@
 
 
 .App {
-  height: 100vh;
+  height: auto;
   background-size: cover;
   background-position: center;
 }
