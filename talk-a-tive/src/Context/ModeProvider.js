@@ -5,6 +5,7 @@ const ModeContext = createContext();
 const ModeProvider = ({children}) => {
 
     const [mode, setMode] = useState("light");
+    const [position, setPosition] = useState('absolute');
 
     const handleMode = () => {
         if(mode === 'light'){
@@ -16,7 +17,7 @@ const ModeProvider = ({children}) => {
         }
     }
 
-    return <ModeContext.Provider value ={{mode, handleMode}} >{children}</ModeContext.Provider>
+    return <ModeContext.Provider value ={{mode, handleMode,position, setPosition}} >{children}</ModeContext.Provider>
 
 }
 

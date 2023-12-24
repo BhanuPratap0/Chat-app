@@ -5,6 +5,7 @@ import Home from './Pages/Home';
 import ChatPage from './Pages/ChatPage';
 import { ModeState } from './Context/ModeProvider';
 import Footer from './components/Footer';
+
 function App() {
   const {mode} = ModeState();
 

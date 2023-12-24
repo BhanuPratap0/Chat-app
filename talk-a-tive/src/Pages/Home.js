@@ -3,14 +3,19 @@ import { Container, Box, Text, TabPanels, Tab, Tabs, TabList, TabPanel } from '@
 import Login from '../components/Authentication/Login'
 import Singup from '../components/Authentication/Singup'
 import { useNavigate } from 'react-router-dom'
+import { ModeState } from '../Context/ModeProvider'
 
 const Home = () => {
 
   let history = useNavigate();
+  const {setPosition} = ModeState();
+    useEffect(()=> {
+        
+    })
 
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem("userInfo"))
-       
+        setPosition('absolute')
         if (!userInfo) {
             history("/chats")
         }
@@ -19,7 +24,7 @@ const Home = () => {
 
   return (
     <div>
-      <Container maxW='xl' centerContent>
+      <Container maxW='xl' height={"92vh"} centerContent>
         <Box
           d="flex"
           p={3}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack, } from '@chakra-ui/react'
 import { ChatState } from '../Context/ChatProvider';
 import SideDrawer from '../components/miscellaneous/SideDrawer'
@@ -11,9 +11,14 @@ const ChatPage = () => {
     const { user } = ChatState();
     const [fetchAgain, setFetchAgain] = useState();
     const {mode} = ModeState();
+    const {setPosition} = ModeState();
+    useEffect(()=> {
+        setPosition('relative')
+    },[])
+
 
     return (
-        <div style={{width:"100%",}} >
+        <div style={{width:"100%"}} >
             {user && <SideDrawer/>}
             <Box
                 display={"flex"}
